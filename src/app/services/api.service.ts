@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-  serverURL = 'https://recipe-server-ang.onrender.com/recipes'
+  serverURL = 'https://recipe-server-ang.onrender.com'
 
   constructor(private http:HttpClient) { }
 
