@@ -1,0 +1,54 @@
+<div class="container-fluid mt-5 bg-black">
+    <h2 class="fw-bolder text-warning text-center mt-5 pt-5">All Recipes</h2>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 pt-5 justify-content-between d-flex ">
+            <input [(ngModel)]="searchKey"  class="form-control me-2" type="search" placeholder="Search Recipe By Name!!!" aria-label="Search">
+            <div class="dropdown">
+                <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Meal Type
+                </button>
+                <ul class="dropdown-menu">
+                  <li><button (click)="listByLunch()" class="dropdown-item" >Lunch</button></li>
+                  <li><button (click)="listByDinner()" class="dropdown-item" >Dinner</button></li>
+                  <li><button (click)="listByBreakFast()" class="dropdown-item" >BreakFast </button></li>
+                  <li><button (click)="listBySnack()" class="dropdown-item" >Snacks </button></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <section class="py-5">
+        <div  class="container px-4 px-lg-5 mt-5">
+            <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div *ngFor="let recipe of recipes | search : searchKey | paginate: { itemsPerPage: 8, currentPage: p }"  class="col mb-5">
+                    <!--  let recipe of recipes | search : searchKey | paginate: { itemsPerPage: 5, currentPage: p };-->
+                    <div class="card h-100 p-2 bg-dark" >
+                        <!-- Product image-->
+                        <img routerLink="/10/view" style="cursor: pointer;" class="card-img-top" [src]="recipe.image" alt="..." height="250px" />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class=" text-black">
+                                <!-- Product name-->
+                                <h4 class="fw-bolder text-center text-success">{{recipe.name}}</h4>
+                                <!-- Product price-->
+                                <h6 class="text-danger pt-3">Cuisine : {{recipe.cuisine}}</h6>
+                                <h6 class="text-white" style="text-align: justify;">MealType: {{recipe.mealType}}</h6>
+                                
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="(recipes | search : searchKey).length==0"  class="text-danger fs-3 my-5 fw-bolder text-center">
+            Recipe not found!!!
+        </div>
+        <div class="mt-2 text-center text-white ">
+            <pagination-controls (pageChange)="p = $event "></pagination-controls>
+        </div>
+    </section>
+</div>
