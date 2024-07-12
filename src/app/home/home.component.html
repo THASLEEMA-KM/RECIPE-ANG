@@ -24,9 +24,9 @@
             <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div *ngFor="let recipe of recipes | search : searchKey | paginate: { itemsPerPage: 8, currentPage: p }"  class="col mb-5">
                     <!--  let recipe of recipes | search : searchKey | paginate: { itemsPerPage: 5, currentPage: p };-->
-                    <div class="card h-100 p-2 bg-dark" >
+                    <div class="card h-100 p-2 bg-dark rounded-5" >
                         <!-- Product image-->
-                        <img routerLink="/10/view" style="cursor: pointer;" class="card-img-top" [src]="recipe.image" alt="..." height="250px" />
+                        <img  style="cursor: pointer;" class="img-fluid rounded-circle" [src]="recipe.image" alt="..." height="300px" />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class=" text-black">
